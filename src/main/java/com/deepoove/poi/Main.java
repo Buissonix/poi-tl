@@ -29,7 +29,7 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 
 		// LIEN DU TUTO EN ANGLAIS
-		// https://github.com/Sayi/poi-tl/wiki/2.English-tutorial
+		// Forked depuis le repo: https://github.com/Sayi/poi-tl/wiki/2.English-tutorial
 
 		final File OUTPUT_DOCX = new File("out_docx.docx");
 		final File OUTPUT_PDF = new File("out_pdf.pdf");
