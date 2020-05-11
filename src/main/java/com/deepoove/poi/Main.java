@@ -28,13 +28,10 @@ public class Main {
 	}
 	public static void main(String[] args) throws IOException {
 
-		// LIEN DU TUTO EN ANGLAIS
-		// Forked depuis le repo: https://github.com/Sayi/poi-tl/wiki/2.English-tutorial
-
 		final File OUTPUT_DOCX = new File("out_docx.docx");
 		final File OUTPUT_PDF = new File("out_pdf.pdf");
 
-		//Supprimer l'output file
+		//Supprimer les anciens output
 		//System.out.println("File exists : " + OUTPUT_DOCX.exists());
 		if (OUTPUT_DOCX.exists()) {
 			try{
@@ -45,8 +42,19 @@ public class Main {
 				e.printStackTrace();
 			}
 		}
+		if (OUTPUT_PDF.exists()) {
+			try{
+				OUTPUT_PDF.delete();}
+			catch (Exception e){
+				System.err.println("Le fichier est probablement ouvert dans un autre programme. Fermez-le et ressayez.");
+				System.err.println(e.getMessage());
+				e.printStackTrace();
+			}
+		}
 
 		// Remplir un template déjà existant au format .docx
+		// Forked depuis le repo: https://github.com/Sayi/poi-tl/wiki/2.English-tutorial
+
 		XWPFTemplate template = XWPFTemplate.compile("template.docx").render(new HashMap<String, Object>(){{
 			put("replaceMe", "Hello World! Check mon CV");
 			put("pic", new PictureRenderData(100, 100, ".png", BytePictureUtils.getUrlByteArray("https://secure.gravatar.com/avatar/e04f14dbb6b83f8c9c36399f7136651b.png")));
